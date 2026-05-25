@@ -479,9 +479,11 @@ function setupEventListeners() {
   });
   
   // Export buttons
+  const exportPdfBtn = document.getElementById('export-pdf-btn');
   const exportCsvBtn = document.getElementById('export-csv-btn');
   const copySummaryBtn = document.getElementById('copy-summary-btn');
   
+  if (exportPdfBtn) exportPdfBtn.addEventListener('click', exportPDF);
   if (exportCsvBtn) exportCsvBtn.addEventListener('click', exportCSV);
   if (copySummaryBtn) copySummaryBtn.addEventListener('click', copySummary);
   
@@ -668,6 +670,165 @@ function exportCSV() {
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
+}
+
+function exportPDF() {
+  const overall = calculateOverallScore();
+  const posture = getPostureLabel(overall);
+  const all = getAllQuestions();
+  const date = new Date().toLocaleDateString();
+  
+  // Build printable HTML
+  let html = '<!DOCTYPE html><html><head>';
+  html += '<meta charset="UTF-8">';
+  html += '<title>MAS MindForge Assessment Report</title>';
+  html += '<style>';
+  html += 'body { font-family: "Segoe UI", Arial, sans-serif; margin: 40px; color: #1e293b; line-height: 1.6; }';
+  html += 'h1 { font-size: 2rem; margin-bottom: 8px; color: #0f172a; }';
+  html += 'h2 { font-size: 1.3rem; margin-top: 30px; margin-bottom: 15px; color: #334155; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }';
+  html += 'h3 { font-size: 1rem; margin-top: 20px; margin-bottom: 10px; color: #475569; }';
+  html += '.header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 3px solid #3b82f6; }';
+  html += '.subtitle { color: #64748b; font-size: 0.95rem; }';
+  html += '.date { color: #94a3b8; font-size: 0.85rem; margin-top: 8px; }';
+  html += '.score-box { text-align: center; margin: 25px 0; padding: 25px; background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0; }';
+  html += '.score-value { font-size: 3rem; font-weight: 700; color: #3b82f6; }';
+  html += '.score-label { font-size: 1rem; color: #64748b; margin-top: 8px; }';
+  html += '.posture { display: inline-block; padding: 6px 18px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-top: 12px; }';
+  html += '.posture-strong { background: #dcfce7; color: #166534; }';
+  html += '.posture-moderate { background: #fef3c7; color: #92400e; }';
+  html += '.posture-developing { background: #fee2e2; color: #991b1b; }';
+  html += '.posture-critical { background: #fecaca; color: #991b1b; }';
+  html += '.pillar-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0; }';
+  html += '.pillar-card { padding: 18px; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0; }';
+  html += '.pillar-name { font-weight: 600; font-size: 0.95rem; color: #334155; }';
+  html += '.pillar-score { font-size: 1.3rem; font-weight: 700; }';
+  html += '.score-green { color: #22c55e; } .score-amber { color: #f59e0b; } .score-red { color: #ef4444; }';
+  html += '.progress-bar { height: 10px; background: #e2e8f0; border-radius: 5px; margin-top: 10px; overflow: hidden; }';
+  html += '.progress-fill { height: 100%; border-radius: 5px; }';
+  html += '.fill-green { background: #22c55e; } .fill-amber { background: #f59e0b; } .fill-red { background: #ef4444; }';
+  html += '.gap-list { margin-top: 15px; }';
+  html += '.gap-item { padding: 12px; background: #fef2f2; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #ef4444; }';
+  html += '.gap-pillar { font-size: 0.8rem; color: #64748b; text-transform: uppercase; font-weight: 600; }';
+  html += '.gap-title { font-weight: 600; color: #1e293b; margin-top: 4px; }';
+  html += '.gap-status { font-size: 0.85rem; color: #dc2626; margin-top: 2px; }';
+  html += '.rec-section { margin-top: 15px; }';
+  html += '.rec-badge { display: inline-block; padding: 6px 12px; margin: 4px; border-radius: 16px; font-size: 0.85rem; background: #ecfeff; color: #0891b2; border: 1px solid #a5f3fc; }';
+  html += '.answer-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; }';
+  html += '.answer-table th { text-align: left; padding: 10px; background: #f1f5f9; font-weight: 600; color: #475569; border-bottom: 2px solid #e2e8f0; }';
+  html += '.answer-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; }';
+  html += '.answer-yes { color: #166534; font-weight: 600; }';
+  html += '.answer-partial { color: #92400e; font-weight: 600; }';
+  html += '.answer-no { color: #991b1b; font-weight: 600; }';
+  html += '.answer-na { color: #64748b; }';
+  html += '.footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; text-align: center; font-size: 0.8rem; color: #94a3b8; }';
+  html += '@media print { body { margin: 20px; } .no-print { display: none; } }';
+  html += '</style></head><body>';
+  
+  // Header
+  html += '<div class="header">';
+  html += '<h1>Unofficial AWS MAS MindForge Well-Architected Lens</h1>';
+  html += '<p class="subtitle">AI Risk Management Assessment Report</p>';
+  html += '<p class="date">Generated: ' + date + '</p>';
+  html += '</div>';
+  
+  // Score
+  html += '<div class="score-box">';
+  html += '<div class="score-value">' + overall + '%</div>';
+  html += '<div class="score-label">Overall Maturity Score</div>';
+  html += '<div class="posture ' + posture.class + '">' + posture.label + ' Posture</div>';
+  html += '</div>';
+  
+  // Pillar scores
+  html += '<h2>Domain Scores</h2>';
+  html += '<div class="pillar-grid">';
+  PILLARS.forEach((pillar, index) => {
+    const score = calculatePillarScore(index);
+    const scoreClass = score >= 80 ? 'score-green' : score >= 60 ? 'score-amber' : 'score-red';
+    const fillClass = score >= 80 ? 'fill-green' : score >= 60 ? 'fill-amber' : 'fill-red';
+    html += '<div class="pillar-card">';
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;">';
+    html += '<span class="pillar-name">' + pillar.name + '</span>';
+    html += '<span class="pillar-score ' + scoreClass + '">' + score + '%</span>';
+    html += '</div>';
+    html += '<div class="progress-bar"><div class="progress-fill ' + fillClass + '" style="width:' + score + '%"></div></div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  
+  // Gaps
+  const gaps = [];
+  all.forEach(q => {
+    const ans = answers[q.id];
+    if (ans === 'no' || ans === 'partial') {
+      gaps.push({ pillar: q.pillarName, title: q.title, answer: ans });
+    }
+  });
+  
+  if (gaps.length > 0) {
+    html += '<h2>Priority Gaps (' + gaps.length + ')</h2>';
+    html += '<div class="gap-list">';
+    gaps.forEach(gap => {
+      html += '<div class="gap-item">';
+      html += '<div class="gap-pillar">' + gap.pillar + '</div>';
+      html += '<div class="gap-title">' + gap.title + '</div>';
+      html += '<div class="gap-status">' + (gap.answer === 'no' ? 'Not Implemented' : 'Partially Implemented') + '</div>';
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+  
+  // AWS Recommendations
+  const allServices = new Set();
+  gaps.forEach(gap => {
+    const q = all.find(q => q.title === gap.title);
+    if (q) {
+      q.bestPractices.forEach(bp => bp.awsServices.forEach(s => allServices.add(s)));
+    }
+  });
+  
+  if (allServices.size > 0) {
+    html += '<h2>Recommended AWS Services</h2>';
+    html += '<div class="rec-section">';
+    [...allServices].forEach(s => {
+      html += '<span class="rec-badge">' + s + '</span>';
+    });
+    html += '</div>';
+  }
+  
+  // Full answer table
+  html += '<h2>Detailed Responses</h2>';
+  html += '<table class="answer-table">';
+  html += '<tr><th>Pillar</th><th>Question</th><th>Answer</th><th>Notes</th></tr>';
+  all.forEach(q => {
+    const ans = answers[q.id] || 'Not Answered';
+    const ansClass = 'answer-' + (ans === 'Not Answered' ? 'na' : ans);
+    const note = notes[q.id] || '';
+    html += '<tr>';
+    html += '<td>' + q.pillarName + '</td>';
+    html += '<td>' + q.id + ' - ' + q.title + '</td>';
+    html += '<td class="' + ansClass + '">' + ans + '</td>';
+    html += '<td>' + (note.length > 100 ? note.substring(0, 100) + '...' : note) + '</td>';
+    html += '</tr>';
+  });
+  html += '</table>';
+  
+  // Footer
+  html += '<div class="footer">';
+  html += '<p>Based on MAS Project MindForge AI Risk Management Operationalisation Handbook (January 2026)</p>';
+  html += '<p>Unofficial AWS Well-Architected Lens | Generated ' + date + '</p>';
+  html += '</div>';
+  
+  html += '</body></html>';
+  
+  // Open in new window and print
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write(html);
+  printWindow.document.close();
+  
+  // Wait for styles to load then print
+  setTimeout(() => {
+    printWindow.print();
+  }, 250);
 }
 
 function copySummary() {
