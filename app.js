@@ -193,10 +193,17 @@ let currentQuestion = 0;
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
   loadState();
-  renderSidebar();
-  renderQuestion();
+
+  // Show landing page if no answers yet, otherwise show questionnaire
+  const hasAnswers = Object.keys(answers).length > 0;
+  if (hasAnswers) {
+    showQuestionnaire();
+    renderSidebar();
+    renderQuestion();
+    updateProgress();
+  }
+
   setupEventListeners();
-  updateProgress();
 });
 
 function loadState() {
@@ -366,7 +373,25 @@ function renderQuestion() {
   }
 }
 
+function showQuestionnaire() {
+  const landing = document.getElementById('landing-page');
+  const questionnaire = document.getElementById('questionnaire-view');
+  if (landing) landing.style.display = 'none';
+  if (questionnaire) questionnaire.style.display = 'block';
+}
+
 function setupEventListeners() {
+  // Commence Assessment button
+  const commenceBtn = document.getElementById('commence-btn');
+  if (commenceBtn) {
+    commenceBtn.addEventListener('click', () => {
+      showQuestionnaire();
+      renderSidebar();
+      renderQuestion();
+      updateProgress();
+    });
+  }
+
   // Answer buttons
   document.querySelectorAll('.answer-btn').forEach(btn => {
     btn.addEventListener('click', () => {

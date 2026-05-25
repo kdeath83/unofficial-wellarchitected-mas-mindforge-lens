@@ -13,7 +13,63 @@
 </head>
 <body>
 <div class="app-container">
-  <!-- Header -->
+  <!-- LANDING PAGE -->
+  <div class="landing-page" id="landing-page">
+    <div class="landing-hero">
+      <div class="landing-badge">AWS Well-Architected Style</div>
+      <h1 class="landing-title">MAS MindForge<br>Well-Architected Lens</h1>
+      <p class="landing-subtitle">
+        Interactive AI Risk Management Assessment for the MAS Project MindForge Framework
+      </p>
+      <p class="landing-description">
+        Evaluate your organisation's AI governance posture across <strong>4 pillars</strong> and <strong>14 considerations</strong>,
+        with native <strong>AWS service recommendations</strong> mapped to each control.
+      </p>
+      <div class="landing-stats">
+        <div class="stat-item">
+          <span class="stat-number">4</span>
+          <span class="stat-label">Pillars</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">14</span>
+          <span class="stat-label">Questions</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">30+</span>
+          <span class="stat-label">AWS Services</span>
+        </div>
+      </div>
+      <div class="landing-features">
+        <div class="feature-item">
+          <span class="feature-icon">&#10003;</span>
+          <span>Real-time maturity scoring</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">&#10003;</span>
+          <span>Per-question AWS service mappings</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">&#10003;</span>
+          <span>Priority gap identification</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">&#10003;</span>
+          <span>Export to CSV & clipboard</span>
+        </div>
+      </div>
+      <button class="commence-btn" id="commence-btn">
+        <span class="commence-text">Commence Assessment</span>
+        <span class="commence-arrow">&#8594;</span>
+      </button>
+      <p class="landing-note">
+        Based on MAS Project MindForge AI Risk Management Operationalisation Handbook (January 2026)
+      </p>
+    </div>
+  </div>
+
+  <!-- QUESTIONNAIRE (hidden initially) -->
+  <div class="questionnaire-view" id="questionnaire-view" style="display:none;">
+    <!-- Header -->
   <header class="app-header">
     <div class="header-left">
       <h1>MAS MindForge Well-Architected Lens</h1>
@@ -129,6 +185,7 @@
   </div>
 
   <!-- Footer -->
+  </div>
   <footer class="app-footer">
     <p>Based on MAS Project MindForge AI Risk Management Operationalisation Handbook (January 2026)</p>
     <p class="version">v1.1 | AWS Well-Architected Style Questionnaire</p>
