@@ -3,251 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Unofficial AWS Well-Architected Lens for MAS Project MindForge AI Risk Management - Import into AWS Well-Architected Tool">
+<meta name="description" content="Interactive Well-Architected Questionnaire for MAS Project MindForge AI Risk Management with AWS native service recommendations">
 <meta property="og:title" content="MAS MindForge Well-Architected Lens">
-<meta property="og:description" content="AWS Well-Architected Tool integration for MAS AI Risk Management framework">
-<meta property="og:type" content="website">
-<title>Unofficial Well-Architected MAS MindForge Lens</title>
-<style>
-  :root {
-    --bg: #0f172a;
-    --bg-card: #1e293b;
-    --text: #f8fafc;
-    --text-secondary: #94a3b8;
-    --accent: #3b82f6;
-    --accent-hover: #2563eb;
-    --border: #334155;
-    --success: #22c55e;
-    --warning: #f59e0b;
-    --danger: #ef4444;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
-  }
-  header {
-    text-align: center;
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border);
-  }
-  header h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-  header .subtitle {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-  }
-  .badge {
-    display: inline-block;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    margin-top: 1rem;
-  }
-  section {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-  section h2 {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    color: var(--text);
-  }
-  section p {
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-  }
-  .button-group {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 1.5rem;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: all 0.2s;
-    border: none;
-    cursor: pointer;
-  }
-  .btn-primary {
-    background: var(--accent);
-    color: white;
-  }
-  .btn-primary:hover {
-    background: var(--accent-hover);
-  }
-  .btn-secondary {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
-  .btn-secondary:hover {
-    background: var(--border);
-  }
-  .pillars {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  .pillar-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1rem;
-  }
-  .pillar-card h3 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: var(--accent);
-  }
-  .pillar-card p {
-    font-size: 0.875rem;
-    margin: 0;
-  }
-  .steps {
-    list-style: none;
-    counter-reset: step;
-  }
-  .steps li {
-    position: relative;
-    padding-left: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--text-secondary);
-  }
-  .steps li::before {
-    counter-increment: step;
-    content: counter(step);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 1.75rem;
-    height: 1.75rem;
-    background: var(--accent);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: 600;
-  }
-  .disclaimer {
-    background: var(--bg);
-    border-left: 3px solid var(--warning);
-    padding: 1rem 1.25rem;
-    border-radius: 0 8px 8px 0;
-    margin-top: 1rem;
-  }
-  .disclaimer p {
-    margin: 0;
-    font-size: 0.875rem;
-  }
-  footer {
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.875rem;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
-  }
-  footer a {
-    color: var(--accent);
-    text-decoration: none;
-  }
-  @media (max-width: 600px) {
-    header h1 { font-size: 1.5rem; }
-    .button-group { flex-direction: column; }
-    .btn { width: 100%; justify-content: center; }
-  }
-</style>
+<meta property="og:description" content="AWS native service recommendations for MAS AI Risk Management framework">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>MAS MindForge Well-Architected Lens</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="container">
-  <header>
-    <h1>Unofficial Well-Architected MAS MindForge Lens</h1>
-    <p class="subtitle">AWS Well-Architected Tool integration for MAS AI Risk Management</p>
-    <span class="badge">Community-maintained / Unofficial</span>
+<div class="app-container">
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-left">
+      <h1>MAS MindForge Well-Architected Lens</h1>
+      <p class="subtitle">AI Risk Management Assessment with AWS Native Service Recommendations</p>
+    </div>
+    <div class="header-right">
+      <div class="score-display" id="score-display">
+        <span class="score-label">Overall Maturity</span>
+        <span class="score-value" id="overall-score">--</span>
+      </div>
+      <div class="progress-display">
+        <span id="progress-text">0/14</span>
+      </div>
+    </div>
   </header>
 
-  <section>
-    <h2>About This Lens</h2>
-    <p>This custom lens maps the MAS Project MindForge AI Risk Management and Governance Framework (January 2026) into the AWS Well-Architected Tool. It enables Financial Services Institutions to systematically assess their AI governance posture using AWS-native review workflows.</p>
-    <div class="pillars">
-      <div class="pillar-card">
-        <h3>1. AI Oversight</h3>
-        <p>Scope, responsibilities, and the three lines of defence model.</p>
+  <!-- Main Layout -->
+  <div class="main-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3>Pillars</h3>
       </div>
-      <div class="pillar-card">
-        <h3>2. AI Risk Management</h3>
-        <p>Policies, enterprise risk, third-party risk, use case risk, and inventory.</p>
+      <div class="pillar-list" id="pillar-list">
+        <!-- Generated by JS -->
       </div>
-      <div class="pillar-card">
-        <h3>3. AI Lifecycle Management</h3>
-        <p>Context, data, build, deploy, and monitor/change.</p>
-      </div>
-      <div class="pillar-card">
-        <h3>4. Enablers</h3>
-        <p>Skills, knowledge, culture, and infrastructure.</p>
-      </div>
-    </div>
-    <div class="button-group">
-      <a href="mindforge-lens.json" download class="btn btn-primary">Download Lens JSON</a>
-      <a href="https://github.com/kdeath83/unofficial-wellarchitected-mas-mindforge-lens" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-    </div>
-  </section>
+    </aside>
 
-  <section>
-    <h2>How to Import</h2>
-    <ol class="steps">
-      <li>Download the lens JSON file using the button above.</li>
-      <li>Open the <a href="https://console.aws.amazon.com/wellarchitected" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">AWS Well-Architected Tool</a> in your AWS account.</li>
-      <li>Navigate to <strong>Custom Lenses</strong> and click <strong>Create custom lens</strong>.</li>
-      <li>Upload the <code>mindforge-lens.json</code> file.</li>
-      <li>Review the lens preview and publish it.</li>
-      <li>Apply the lens to a workload and start your AI governance review.</li>
-    </ol>
-  </section>
+    <!-- Content Area -->
+    <main class="content-area" id="content-area">
+      <!-- Question Card -->
+      <div class="question-card" id="question-card">
+        <div class="question-header">
+          <span class="pillar-badge" id="current-pillar-badge">Pillar</span>
+          <span class="question-number" id="question-number">Question 1 of 14</span>
+        </div>
+        <h2 class="question-title" id="question-title">Loading...</h2>
+        <p class="question-description" id="question-description"></p>
 
-  <section>
-    <h2>Reference</h2>
-    <p>Always refer to the official MAS handbook for authoritative guidance:</p>
-    <div class="button-group">
-      <a href="https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">MAS MindForge Handbook</a>
-      <a href="https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Project MindForge</a>
-    </div>
-    <div class="disclaimer">
-      <p><strong>Disclaimer:</strong> This is an unofficial, community-maintained lens. It is not endorsed by MAS or AWS. Always verify against the official MAS Project MindForge documentation before making compliance decisions.</p>
-    </div>
-  </section>
+        <!-- Answer Choices -->
+        <div class="answer-section">
+          <h4>Select your current state:</h4>
+          <div class="answer-buttons" id="answer-buttons">
+            <button class="answer-btn yes" data-value="yes" tabindex="0">
+              <span class="answer-icon">Yes</span>
+              <span class="answer-label">Implemented</span>
+            </button>
+            <button class="answer-btn partial" data-value="partial" tabindex="0">
+              <span class="answer-icon">Partial</span>
+              <span class="answer-label">Partially Implemented</span>
+            </button>
+            <button class="answer-btn no" data-value="no" tabindex="0">
+              <span class="answer-icon">No</span>
+              <span class="answer-label">Not Implemented</span>
+            </button>
+            <button class="answer-btn na" data-value="na" tabindex="0">
+              <span class="answer-icon">N/A</span>
+              <span class="answer-label">Not Applicable</span>
+            </button>
+          </div>
+        </div>
 
-  <footer>
-    <p>Built by <a href="https://github.com/kdeath83" target="_blank" rel="noopener noreferrer">kdeath83</a> &middot; 2026 &middot; MIT License</p>
+        <!-- Best Practices -->
+        <div class="best-practices-section" id="best-practices-section">
+          <h4>Best Practices</h4>
+          <ul class="best-practices-list" id="best-practices-list"></ul>
+        </div>
+
+        <!-- AWS Services -->
+        <div class="aws-services-section" id="aws-services-section">
+          <h4>Recommended AWS Services</h4>
+          <div class="aws-services-grid" id="aws-services-grid"></div>
+        </div>
+
+        <!-- Improvement Plan -->
+        <div class="improvement-section" id="improvement-section">
+          <h4>Improvement Plan</h4>
+          <p class="improvement-text" id="improvement-text"></p>
+        </div>
+
+        <!-- Notes -->
+        <div class="notes-section">
+          <h4>Notes</h4>
+          <textarea class="notes-textarea" id="notes-textarea" placeholder="Add notes about this question..."></textarea>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="navigation-bar">
+        <button class="nav-btn prev" id="prev-btn" tabindex="0">Previous</button>
+        <button class="nav-btn next" id="next-btn" tabindex="0">Next</button>
+        <button class="nav-btn report" id="report-btn" tabindex="0" style="display:none;">Generate Report</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Report Modal -->
+  <div class="modal-overlay" id="modal-overlay" style="display:none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Assessment Report</h2>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+      <div class="modal-body" id="report-body">
+        <!-- Generated by JS -->
+      </div>
+      <div class="modal-footer">
+        <button class="secondary-btn" id="export-csv-btn">Export CSV</button>
+        <button class="secondary-btn" id="copy-summary-btn">Copy Summary</button>
+        <button class="primary-btn" id="close-modal-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <p>Based on MAS Project MindForge AI Risk Management Operationalisation Handbook (January 2026)</p>
+    <p class="version">v1.1 | AWS Well-Architected Style Questionnaire</p>
   </footer>
 </div>
+
+<script src="app.js"></script>
 </body>
 </html>
