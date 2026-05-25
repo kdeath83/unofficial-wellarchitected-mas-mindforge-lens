@@ -1,0 +1,619 @@
+{
+  "schemaVersion": "2021-11-01",
+  "name": "Unofficial Well-Architected MAS MindForge Lens",
+  "description": "A custom AWS Well-Architected Lens that maps the MAS Project MindForge AI Risk Management and Governance Framework (January 2026) into the AWS Well-Architected Tool. This lens helps Financial Services Institutions assess their AI governance posture across four domains: AI Oversight, AI Risk Management, AI Lifecycle Management, and Enablers. It is unofficial and community-maintained; always refer to the official MAS handbook for authoritative guidance.",
+  "pillars": [
+    {
+      "id": "ai_oversight",
+      "name": "AI Oversight",
+      "questions": [
+        {
+          "id": "oversight_scope",
+          "title": "How do you define the scope and application of your AI governance framework?",
+          "description": "Establish clear boundaries for which AI systems, use cases, and business units fall under governance. Define materiality thresholds and classification criteria based on the MindForge AI Risk Taxonomy.",
+          "choices": [
+            {
+              "id": "scope_comprehensive",
+              "title": "Comprehensive scope defined with materiality thresholds and documented exclusions",
+              "improvementPlan": {
+                "displayText": "Maintain and annually review scope documentation. Ensure new AI use cases are automatically assessed against materiality criteria."
+              }
+            },
+            {
+              "id": "scope_partial",
+              "title": "Partial scope defined for some AI systems or business units only",
+              "improvementPlan": {
+                "displayText": "Expand scope definition to cover all AI systems, including third-party and vendor solutions. Define materiality thresholds for all use cases."
+              }
+            },
+            {
+              "id": "scope_no",
+              "title": "None of these",
+              "improvementPlan": {
+                "displayText": "Define governance scope immediately. Start with a risk-based inventory of all AI systems and classify by materiality."
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "scope_comprehensive",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "scope_partial",
+              "risk": "MEDIUM_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "HIGH_RISK"
+            }
+          ]
+        },
+        {
+          "id": "oversight_responsibilities",
+          "title": "How do you define and assign responsibilities for AI oversight?",
+          "description": "Establish the three lines of defence model for AI governance. Define roles, accountability, and escalation paths for AI risk decisions.",
+          "choices": [
+            {
+              "id": "resp_three_lines",
+              "title": "Three lines of defence model implemented with documented roles and accountability",
+              "improvementPlan": {
+                "displayText": "Conduct annual training on the three lines of defence. Review and update role definitions as AI use cases evolve."
+              }
+            },
+            {
+              "id": "resp_partial",
+              "title": "Some oversight roles defined but gaps remain in accountability or escalation",
+              "improvementPlan": {
+                "displayText": "Formalise the three lines of defence model. Assign explicit accountability for AI risk decisions to named individuals."
+              }
+            },
+            {
+              "id": "resp_no",
+              "title": "None of these",
+              "improvementPlan": {
+                "displayText": "Define AI oversight responsibilities using the three lines of defence model. Start with a RACI matrix for AI governance."
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "resp_three_lines",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "resp_partial",
+              "risk": "MEDIUM_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "HIGH_RISK"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ai_risk_management",
+      "name": "AI Risk Management",
+      "questions": [
+        {
+          "id": "risk_policies",
+          "title": "How do you ensure effective AI-related policies, procedures, and standards?",
+          "description": "Develop and maintain documented policies covering AI ethics, risk appetite, model governance, data usage, and regulatory compliance.",
+          "choices": [
+            {
+              "id": "policies_full",
+              "title": "Comprehensive AI policy framework approved by board and regularly reviewed",
+              "improvementPlan": {
+                "displayText": "Schedule annual policy reviews. Track regulatory changes and update policies proactively."
+              }
+            },
+            {
+              "id": "policies_partial",
+              "title": "Some AI policies exist but are incomplete or not board-approved",
+              "improvementPlan": {
+                "displayText": "Develop a complete AI policy framework covering ethics, risk appetite, model governance, and data usage. Obtain board approval."
+              }
+            },
+            {
+              "id": "policies_no",
+              "title": "None of these",
+              "improvementPlan": {
+                "displayText": "Draft an AI policy framework starting with high-risk use cases. Use the MAS MindForge handbook as a reference."
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "policies_full",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "policies_partial",
+              "risk": "MEDIUM_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "HIGH_RISK"
+            }
+          ]
+        },
+        {
+          "id": "risk_enterprise",
+          "title": "How do you enhance organisation-level AI risk management?",
+          "description": "Integrate AI risk into the enterprise risk management framework. Establish AI-specific risk appetite, tolerances, and reporting mechanisms.",
+          "choices": [
+            {
+              "id": "erm_integrated",
+              "title": "AI risk fully integrated into ERM with defined appetite and regular reporting",
+              "improvementPlan": {
+                "displayText": "Enhance AI risk reporting with predictive indicators. Stress-test AI risk scenarios annually."
+              }
+            },
+            {
+              "id": "erm_partial",
+              "title": "AI risk partially integrated or siloed from broader enterprise risk",
+              "improvementPlan": {
+                "displayText": "Formalise AI risk integration into the ERM framework. Define AI-specific risk appetite and reporting cadence."
+              }
+            },
+            {
+              "id": "erm_no",
+              "title": "None of these",
+              "improvementPlan": {
+                "displayText": "Map AI risks to the enterprise risk taxonomy. Establish an AI risk register and define appetite thresholds."
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "erm_integrated",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "erm_partial",
+              "risk": "MEDIUM_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "HIGH_RISK"
+            }
+          ]
+        },
+        {
+          "id": "risk_third_party",
+          "title": "How do you manage third-party AI risks?",
+          "description": "Assess and monitor AI risks from vendors, cloud providers, and outsourced AI services. Ensure contractual safeguards and due diligence.",
+          "choices": [
+            {
+              "id": "third_party_full",
+              "title": "Third-party AI risk framework with due diligence, contracts, and ongoing monitoring",
+              "improvementPlan": {
+                "displayText": "Conduct periodic third-party AI risk audits. Update contractual safeguards as vendor capabilities evolve."
+              }
+            },
+            {
+              "id": "third_party_partial",
+              "title": "Some third-party AI risks assessed but no systematic framework",
+              "improvementPlan": {
+                "displayText": "Build a systematic third-party AI risk framework. Include AI-specific clauses in all vendor contracts."
+              }
+            },
+            {
+              "id": "third_party_no",
+              "title": "None of these",
+              "improvementPlan": {
+                "displayText": "Inventory all third-party AI services. Conduct risk assessments and establish minimum contractual safeguards."
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "third_party_full",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "third_party_partial",
+              "risk": "MEDIUM_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "HIGH_RISK"
+            }
+          ]
+        },
+        {
+          "id": "risk_use_case",
+          "title": "How do you enhance use case-level AI risk management?",
+          "description": "Conduct structured risk assessments for each AI use case. Document inherent risk, residual risk, and control effectiveness.",
+          "choices": [
+            {
+              "id": "use_case_full",
+              "title": "All AI use cases have documented risk assessments with inherent and residual risk scores",
+              "improvementPlan": {
+                "displayText": "Enhance use case assessments with scenario analysis and stress testing. Link to enterprise risk reporting."
+              }
+            },
+            {
+              "id": "use_case_partial",
+              "title": "Some use cases assessed but not all, or assessments lack residual risk analysis",
+              "improvementPlan": {
+                "displayText": "Extend risk assessments to all AI use cases. Ensure each assessment covers inherent risk, controls, and residual risk."
+              }
+            },
+            {
+              "id": "use_case_no",
+              "title": "None of these",
+              "improvementPlan": {
+                "displayText": "Start with the highest-materiality use cases. Use the MindForge AI Card template to structure assessments."
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "use_case_full",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "use_case_partial",
+              "risk": "MEDIUM_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "HIGH_RISK"
+            }
+          ]
+        },
+        {
+          "id": "risk_inventory",
+          "title": "How do you ensure AI inventory capabilities?",
+          "description": "Maintain an accurate, up-to-date inventory of all AI systems, models, data sources, and dependencies across the organisation.",
+          "choices": [
+            {
+              "id": "inventory_full",
+              "title": "Centralised AI inventory with automated discovery and regular reconciliation",
+              "improvementPlan": {
+                "displayText": "Enhance inventory with lineage tracking and automated change detection. Integrate with model registries."
+              }
+            },
+            {
+              "id": "inventory_partial",
+              "title": "Partial inventory exists but is manual, incomplete, or not regularly updated",
+              "improvementPlan": {
+                "displayText": "Implement a centralised AI inventory system. Automate discovery where possible and establish quarterly reconciliation."
+              }
+            },
+            {
+              "id": "inventory_no",
+              "title": "None of these",
+              "improvementPlan": {
+                "displayText": "Create a baseline AI inventory starting with known high-risk systems. Establish ownership and update cadence."
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "inventory_full",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "inventory_partial",
+              "risk": "MEDIUM_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "HIGH_RISK"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ai_lifecycle",
+      "name": "AI Lifecycle Management",
+      "questions": [
+        {
+          "id": "lifecycle_context",
+          "title": "How do you manage use case context and design?",
+          "description": "Document business objectives, success criteria, stakeholder requirements, and ethical considerations before AI system design.",
+          "choices": [
+            {
+              "id": "context_full",
+              "title": "All AI use cases have documented context, objectives, success criteria, and ethical review",
+              "improvementPlan": {
+                "displayText": "Enhance design documentation with bias analysis and fairness metrics. Integrate ethical review into design gates."
+              }
+            },
+            {
+              "id": "context_partial",
+              "title": "Some use cases have design documentation but ethical review is inconsistent",
+              "improvementPlan": {
+                "displayText": "Standardise use case context documentation for all AI systems. Mandate ethical review before design approval."
+              }
+            },
+            {
+              "id": "context_no",
+              "title": "None of these",
+              "improvementPlan": {
+                "displayText": "Create a use case context template covering objectives, stakeholders, success criteria, and ethical considerations."
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "context_full",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "context_partial",
+              "risk": "MEDIUM_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "HIGH_RISK"
+            }
+          ]
+        },
+        {
+          "id": "lifecycle_data",
+          "title": "How do you manage data acquisition and processing for AI?",
+          "description": "Ensure data quality, provenance, privacy compliance, and bias mitigation across the AI data pipeline.",
+          "choices": [
+            {
+              "id": "data_full",
+              "title": "Data governance framework with quality metrics, provenance tracking, and bias monitoring",
+              "improvementPlan": {
+                "displayText": "Enhance data governance with automated quality checks and real-time bias detection. Expand provenance to third-party data."
+              }
+            },
+            {
+              "id": "data_partial",
+              "title": "Some data controls exist but gaps in quality, provenance, or bias management",
+              "improvementPlan": {
+                "displayText": "Build a comprehensive data governance framework for AI. Implement data quality metrics and bias monitoring."
+              }
+            },
+            {
+              "id": "data_no",
+              "title": "None of these",
+              "improvementPlan": {
+                "displayText": "Start with data inventory and classification. Implement basic quality checks and establish data ownership."
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "data_full",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "data_partial",
+              "risk": "MEDIUM_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "HIGH_RISK"
+            }
+          ]
+        },
+        {
+          "id": "lifecycle_build",
+          "title": "How do you manage onboarding, build, and review of AI systems?",
+          "description": "Establish development standards, model validation, testing protocols, and review gates for AI system build phases.",
+          "choices": [
+            {
+              "id": "build_full",
+              "title": "Structured build process with validation, testing, peer review, and model cards",
+              "improvementPlan": {
+                "displayText": "Enhance build process with automated testing and continuous validation. Integrate model cards into the release process."
+              }
+            },
+            {
+              "id": "build_partial",
+              "title": "Some build controls exist but validation or review is inconsistent",
+              "improvementPlan": {
+                "displayText": "Formalise the AI build process with mandatory validation, testing, and peer review gates. Introduce model cards."
+              }
+            },
+            {
+              "id": "build_no",
+              "title": "None of these",
+              "improvementPlan": {
+                "displayText": "Define minimum build standards for AI. Implement model validation and basic testing before deployment."
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "build_full",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "build_partial",
+              "risk": "MEDIUM_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "HIGH_RISK"
+            }
+          ]
+        },
+        {
+          "id": "lifecycle_deploy",
+          "title": "How do you manage AI system deployment?",
+          "description": "Implement deployment controls including staging environments, rollback capabilities, A/B testing, and production readiness checks.",
+          "choices": [
+            {
+              "id": "deploy_full",
+              "title": "Deployment pipeline with staging, rollback, readiness checks, and automated monitoring",
+              "improvementPlan": {
+                "displayText": "Enhance deployment with canary releases and automated rollback triggers. Integrate deployment checks into CI/CD."
+              }
+            },
+            {
+              "id": "deploy_partial",
+              "title": "Some deployment controls exist but pipeline is manual or lacks rollback",
+              "improvementPlan": {
+                "displayText": "Build a structured deployment pipeline for AI. Implement staging, readiness checks, and rollback capabilities."
+              }
+            },
+            {
+              "id": "deploy_no",
+              "title": "None of these",
+              "improvementPlan": {
+                "displayText": "Define minimum deployment controls for AI. Start with staging environment and basic readiness checklist."
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "deploy_full",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "deploy_partial",
+              "risk": "MEDIUM_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "HIGH_RISK"
+            }
+          ]
+        },
+        {
+          "id": "lifecycle_monitor",
+          "title": "How do you manage AI system usage, monitoring, and change?",
+          "description": "Continuously monitor AI system performance, drift, fairness, and security. Establish change management for model updates.",
+          "choices": [
+            {
+              "id": "monitor_full",
+              "title": "Continuous monitoring with drift detection, fairness metrics, and formal change management",
+              "improvementPlan": {
+                "displayText": "Enhance monitoring with automated alerting and model retraining triggers. Integrate change management with model registry."
+              }
+            },
+            {
+              "id": "monitor_partial",
+              "title": "Some monitoring exists but lacks drift detection or formal change management",
+              "improvementPlan": {
+                "displayText": "Implement continuous monitoring for all production AI systems. Add drift detection and formalise change management."
+              }
+            },
+            {
+              "id": "monitor_no",
+              "title": "None of these",
+              "improvementPlan": {
+                "displayText": "Start with basic performance monitoring for production AI. Define change management process for model updates."
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "monitor_full",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "monitor_partial",
+              "risk": "MEDIUM_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "HIGH_RISK"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ai_enablers",
+      "name": "Enablers",
+      "questions": [
+        {
+          "id": "enabler_skills",
+          "title": "How do you enable AI governance with skills, knowledge, and culture?",
+          "description": "Build organisational capability through training, awareness programs, and a culture of responsible AI use.",
+          "choices": [
+            {
+              "id": "skills_full",
+              "title": "Comprehensive AI training program with role-based curricula and culture metrics",
+              "improvementPlan": {
+                "displayText": "Expand training to emerging AI topics. Measure and report on culture and awareness metrics."
+              }
+            },
+            {
+              "id": "skills_partial",
+              "title": "Some training exists but is not role-based or lacks coverage of AI risk",
+              "improvementPlan": {
+                "displayText": "Develop role-based AI training curricula. Add AI risk and ethics modules for all relevant roles."
+              }
+            },
+            {
+              "id": "skills_no",
+              "title": "None of these",
+              "improvementPlan": {
+                "displayText": "Start with awareness training for leadership and AI practitioners. Build towards role-based curricula."
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "skills_full",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "skills_partial",
+              "risk": "MEDIUM_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "HIGH_RISK"
+            }
+          ]
+        },
+        {
+          "id": "enabler_infrastructure",
+          "title": "How do you manage AI infrastructure?",
+          "description": "Ensure compute, storage, and network infrastructure supports AI workloads securely, scalably, and cost-effectively.",
+          "choices": [
+            {
+              "id": "infra_full",
+              "title": "AI infrastructure managed with security controls, scalability, and cost governance",
+              "improvementPlan": {
+                "displayText": "Optimise infrastructure costs with auto-scaling and spot instances. Enhance security with zero-trust networking."
+              }
+            },
+            {
+              "id": "infra_partial",
+              "title": "Some infrastructure controls exist but gaps in security, scalability, or cost management",
+              "improvementPlan": {
+                "displayText": "Formalise AI infrastructure governance. Implement security controls, auto-scaling, and cost monitoring."
+              }
+            },
+            {
+              "id": "infra_no",
+              "title": "None of these",
+              "improvementPlan": {
+                "displayText": "Assess current AI infrastructure against security and scalability requirements. Establish baseline controls."
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "infra_full",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "infra_partial",
+              "risk": "MEDIUM_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "HIGH_RISK"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

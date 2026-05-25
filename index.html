@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Unofficial AWS Well-Architected Lens for MAS Project MindForge AI Risk Management - Import into AWS Well-Architected Tool">
+<meta property="og:title" content="MAS MindForge Well-Architected Lens">
+<meta property="og:description" content="AWS Well-Architected Tool integration for MAS AI Risk Management framework">
+<meta property="og:type" content="website">
+<title>Unofficial Well-Architected MAS MindForge Lens</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --bg-card: #1e293b;
+    --text: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --border: #334155;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  header .subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+  .badge {
+    display: inline-block;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 1rem;
+  }
+  section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  section p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+  .button-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+  .btn-primary:hover {
+    background: var(--accent-hover);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover {
+    background: var(--border);
+  }
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .pillar-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .pillar-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+  }
+  .pillar-card p {
+    font-size: 0.875rem;
+    margin: 0;
+  }
+  .steps {
+    list-style: none;
+    counter-reset: step;
+  }
+  .steps li {
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+  }
+  .steps li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .disclaimer {
+    background: var(--bg);
+    border-left: 3px solid var(--warning);
+    padding: 1rem 1.25rem;
+    border-radius: 0 8px 8px 0;
+    margin-top: 1rem;
+  }
+  .disclaimer p {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+  footer {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.5rem; }
+    .button-group { flex-direction: column; }
+    .btn { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Unofficial Well-Architected MAS MindForge Lens</h1>
+    <p class="subtitle">AWS Well-Architected Tool integration for MAS AI Risk Management</p>
+    <span class="badge">Community-maintained / Unofficial</span>
+  </header>
+
+  <section>
+    <h2>About This Lens</h2>
+    <p>This custom lens maps the MAS Project MindForge AI Risk Management and Governance Framework (January 2026) into the AWS Well-Architected Tool. It enables Financial Services Institutions to systematically assess their AI governance posture using AWS-native review workflows.</p>
+    <div class="pillars">
+      <div class="pillar-card">
+        <h3>1. AI Oversight</h3>
+        <p>Scope, responsibilities, and the three lines of defence model.</p>
+      </div>
+      <div class="pillar-card">
+        <h3>2. AI Risk Management</h3>
+        <p>Policies, enterprise risk, third-party risk, use case risk, and inventory.</p>
+      </div>
+      <div class="pillar-card">
+        <h3>3. AI Lifecycle Management</h3>
+        <p>Context, data, build, deploy, and monitor/change.</p>
+      </div>
+      <div class="pillar-card">
+        <h3>4. Enablers</h3>
+        <p>Skills, knowledge, culture, and infrastructure.</p>
+      </div>
+    </div>
+    <div class="button-group">
+      <a href="mindforge-lens.json" download class="btn btn-primary">Download Lens JSON</a>
+      <a href="https://github.com/kdeath83/unofficial-wellarchitected-mas-mindforge-lens" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>How to Import</h2>
+    <ol class="steps">
+      <li>Download the lens JSON file using the button above.</li>
+      <li>Open the <a href="https://console.aws.amazon.com/wellarchitected" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">AWS Well-Architected Tool</a> in your AWS account.</li>
+      <li>Navigate to <strong>Custom Lenses</strong> and click <strong>Create custom lens</strong>.</li>
+      <li>Upload the <code>mindforge-lens.json</code> file.</li>
+      <li>Review the lens preview and publish it.</li>
+      <li>Apply the lens to a workload and start your AI governance review.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Reference</h2>
+    <p>Always refer to the official MAS handbook for authoritative guidance:</p>
+    <div class="button-group">
+      <a href="https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">MAS MindForge Handbook</a>
+      <a href="https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Project MindForge</a>
+    </div>
+    <div class="disclaimer">
+      <p><strong>Disclaimer:</strong> This is an unofficial, community-maintained lens. It is not endorsed by MAS or AWS. Always verify against the official MAS Project MindForge documentation before making compliance decisions.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Built by <a href="https://github.com/kdeath83" target="_blank" rel="noopener noreferrer">kdeath83</a> &middot; 2026 &middot; MIT License</p>
+  </footer>
+</div>
+</body>
+</html>
