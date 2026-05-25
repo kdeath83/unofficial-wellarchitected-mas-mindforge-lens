@@ -844,6 +844,15 @@ body {
   color: var(--text-muted);
 }
 
+.landing-note a {
+  color: var(--accent-blue);
+  text-decoration: underline;
+}
+
+.landing-note a:hover {
+  color: var(--accent-cyan);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .main-layout {
