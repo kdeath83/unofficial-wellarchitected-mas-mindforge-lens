@@ -10,33 +10,40 @@
         {
           "id": "oversight_scope",
           "title": "How do you define the scope and application of your AI governance framework?",
-          "description": "Establish clear boundaries for which AI systems, use cases, and business units fall under governance. Define materiality thresholds and classification criteria based on the MindForge AI Risk Taxonomy.",
+          "description": "Define what constitutes AI within your institution. Establish clear boundaries, proportionality, and materiality thresholds. Ensure the scope covers internal, vendor-developed, and third-party AI systems. The handbook recommends three general considerations when defining AI: nature of the AI system, role of human involvement, and materiality of the use case.",
+          "helpfulResource": {
+            "displayText": "MAS Project MindForge - Scope and Application guidance",
+            "url": "https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge"
+          },
           "choices": [
             {
-              "id": "scope_comprehensive",
-              "title": "Comprehensive scope defined with materiality thresholds and documented exclusions",
+              "id": "scope_defined",
+              "title": "AI is formally defined; scope covers all systems with proportionality; materiality thresholds are documented and applied",
               "improvementPlan": {
-                "displayText": "Maintain and annually review scope documentation. Ensure new AI use cases are automatically assessed against materiality criteria."
+                "displayText": "Periodically review the AI definition and scope. Update materiality thresholds as AI capabilities evolve. Ensure new AI use cases are automatically assessed against scope criteria.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
               "id": "scope_partial",
-              "title": "Partial scope defined for some AI systems or business units only",
+              "title": "AI is partially defined or scope covers only some AI systems; materiality thresholds are informal or inconsistent",
               "improvementPlan": {
-                "displayText": "Expand scope definition to cover all AI systems, including third-party and vendor solutions. Define materiality thresholds for all use cases."
+                "displayText": "Formalise the AI definition using the three general considerations (nature of system, human involvement, materiality). Expand scope to cover vendor and third-party AI. Document materiality thresholds.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
-              "id": "scope_no",
+              "id": "scope_none",
               "title": "None of these",
               "improvementPlan": {
-                "displayText": "Define governance scope immediately. Start with a risk-based inventory of all AI systems and classify by materiality."
+                "displayText": "Start by defining what constitutes AI in your institution. Use the MAS MindForge handbook's three general considerations. Inventory known AI systems and apply a basic materiality assessment.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             }
           ],
           "riskRules": [
             {
-              "condition": "scope_comprehensive",
+              "condition": "scope_defined",
               "risk": "NO_RISK"
             },
             {
@@ -52,33 +59,40 @@
         {
           "id": "oversight_responsibilities",
           "title": "How do you define and assign responsibilities for AI oversight?",
-          "description": "Establish the three lines of defence model for AI governance. Define roles, accountability, and escalation paths for AI risk decisions.",
+          "description": "Leverage existing enterprise governance functions rather than creating new standalone AI governance structures. Ensure the Board, Senior Management, and operational governance have clear AI responsibilities. Establish operating effectiveness measures and horizon-scanning for emerging AI risks.",
+          "helpfulResource": {
+            "displayText": "MAS Project MindForge - AI Oversight responsibilities guidance",
+            "url": "https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge"
+          },
           "choices": [
             {
-              "id": "resp_three_lines",
-              "title": "Three lines of defence model implemented with documented roles and accountability",
+              "id": "resp_full",
+              "title": "Three lines of defence model applied to AI with clear Board, Senior Management, and operational roles; operating effectiveness is measured",
               "improvementPlan": {
-                "displayText": "Conduct annual training on the three lines of defence. Review and update role definitions as AI use cases evolve."
+                "displayText": "Conduct periodic reviews of AI governance operating effectiveness. Update horizon-scanning processes to capture emerging AI risks (e.g. Agentic AI).",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
               "id": "resp_partial",
-              "title": "Some oversight roles defined but gaps remain in accountability or escalation",
+              "title": "Some AI oversight roles defined but gaps in Board/Senior Management accountability, operating effectiveness, or horizon-scanning",
               "improvementPlan": {
-                "displayText": "Formalise the three lines of defence model. Assign explicit accountability for AI risk decisions to named individuals."
+                "displayText": "Formalise AI responsibilities across the three lines of defence. Ensure Board and Senior Management have explicit AI risk accountability. Implement operating effectiveness measures.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
-              "id": "resp_no",
+              "id": "resp_none",
               "title": "None of these",
               "improvementPlan": {
-                "displayText": "Define AI oversight responsibilities using the three lines of defence model. Start with a RACI matrix for AI governance."
+                "displayText": "Map AI oversight responsibilities to existing governance structures. Start with a RACI matrix for Board, Senior Management, and operational teams. Define minimum operating effectiveness measures.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             }
           ],
           "riskRules": [
             {
-              "condition": "resp_three_lines",
+              "condition": "resp_full",
               "risk": "NO_RISK"
             },
             {
@@ -100,27 +114,34 @@
         {
           "id": "risk_policies",
           "title": "How do you ensure effective AI-related policies, procedures, and standards?",
-          "description": "Develop and maintain documented policies covering AI ethics, risk appetite, model governance, data usage, and regulatory compliance.",
+          "description": "Develop AI governance documents that define AI within your institution, establish AI identification processes, classify AI use cases by risk materiality, and set periodic review cadences. The handbook emphasises that the AI definition is a foundational governance document that must be reviewed and updated.",
+          "helpfulResource": {
+            "displayText": "MAS Project MindForge - AI Policies guidance",
+            "url": "https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge"
+          },
           "choices": [
             {
               "id": "policies_full",
-              "title": "Comprehensive AI policy framework approved by board and regularly reviewed",
+              "title": "AI policies formally define AI, include identification/classification processes, classify by risk materiality, and are reviewed periodically",
               "improvementPlan": {
-                "displayText": "Schedule annual policy reviews. Track regulatory changes and update policies proactively."
+                "displayText": "Enhance policies with emerging AI type definitions (e.g. Agentic AI). Automate identification and classification workflows. Link policy reviews to regulatory updates.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
               "id": "policies_partial",
-              "title": "Some AI policies exist but are incomplete or not board-approved",
+              "title": "Some AI policies exist but lack formal AI definition, identification process, or risk materiality classification",
               "improvementPlan": {
-                "displayText": "Develop a complete AI policy framework covering ethics, risk appetite, model governance, and data usage. Obtain board approval."
+                "displayText": "Develop a formal AI definition. Establish an AI identification process and classify use cases by risk materiality. Set a periodic review schedule for all AI governance documents.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
-              "id": "policies_no",
+              "id": "policies_none",
               "title": "None of these",
               "improvementPlan": {
-                "displayText": "Draft an AI policy framework starting with high-risk use cases. Use the MAS MindForge handbook as a reference."
+                "displayText": "Draft an initial AI policy that defines AI in your institution and establishes an identification process. Use the MAS MindForge handbook's guidance on AI definition and classification.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             }
           ],
@@ -142,33 +163,40 @@
         {
           "id": "risk_enterprise",
           "title": "How do you enhance organisation-level AI risk management?",
-          "description": "Integrate AI risk into the enterprise risk management framework. Establish AI-specific risk appetite, tolerances, and reporting mechanisms.",
+          "description": "Integrate AI risk into your enterprise risk management framework. Define AI risk taxonomies, risk appetite, and tolerances. Establish Key Risk Indicators (KRIs) and incident tracking mechanisms specific to AI.",
+          "helpfulResource": {
+            "displayText": "MAS Project MindForge - Organisation-Level AI Risk Management guidance",
+            "url": "https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge"
+          },
           "choices": [
             {
-              "id": "erm_integrated",
-              "title": "AI risk fully integrated into ERM with defined appetite and regular reporting",
+              "id": "erm_full",
+              "title": "AI risk is fully integrated into ERM with defined taxonomies, appetite, tolerances, KRIs, and incident tracking",
               "improvementPlan": {
-                "displayText": "Enhance AI risk reporting with predictive indicators. Stress-test AI risk scenarios annually."
+                "displayText": "Enhance AI risk reporting with predictive KRIs. Conduct stress-testing for AI-specific scenarios. Expand incident tracking to include near-misses and model failures.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
               "id": "erm_partial",
-              "title": "AI risk partially integrated or siloed from broader enterprise risk",
+              "title": "AI risk is partially integrated into ERM but lacks taxonomies, KRIs, or formal incident tracking",
               "improvementPlan": {
-                "displayText": "Formalise AI risk integration into the ERM framework. Define AI-specific risk appetite and reporting cadence."
+                "displayText": "Define AI-specific risk taxonomies and appetite thresholds. Establish KRIs for AI systems. Implement formal AI incident tracking and reporting.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
-              "id": "erm_no",
+              "id": "erm_none",
               "title": "None of these",
               "improvementPlan": {
-                "displayText": "Map AI risks to the enterprise risk taxonomy. Establish an AI risk register and define appetite thresholds."
+                "displayText": "Map AI risks to your existing enterprise risk taxonomy. Define initial AI risk appetite and establish a basic KRI dashboard. Start tracking AI incidents.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             }
           ],
           "riskRules": [
             {
-              "condition": "erm_integrated",
+              "condition": "erm_full",
               "risk": "NO_RISK"
             },
             {
@@ -183,28 +211,35 @@
         },
         {
           "id": "risk_third_party",
-          "title": "How do you manage third-party AI risks?",
-          "description": "Assess and monitor AI risks from vendors, cloud providers, and outsourced AI services. Ensure contractual safeguards and due diligence.",
+          "title": "How do you uplift practices for managing third-party AI risks?",
+          "description": "Implement pre- and post-procurement mitigations for third-party AI. Conduct due diligence, establish contractual safeguards, and use AI Cards for vendor disclosure. Monitor third-party AI throughout the engagement lifecycle.",
+          "helpfulResource": {
+            "displayText": "MAS Project MindForge - Third-Party AI Risk guidance",
+            "url": "https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge"
+          },
           "choices": [
             {
               "id": "third_party_full",
-              "title": "Third-party AI risk framework with due diligence, contracts, and ongoing monitoring",
+              "title": "Third-party AI risk framework covers pre/post procurement, due diligence, contractual safeguards, AI Cards, and ongoing monitoring",
               "improvementPlan": {
-                "displayText": "Conduct periodic third-party AI risk audits. Update contractual safeguards as vendor capabilities evolve."
+                "displayText": "Enhance third-party monitoring with automated compliance checks. Expand AI Card requirements to all critical vendors. Conduct periodic third-party AI risk audits.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
               "id": "third_party_partial",
-              "title": "Some third-party AI risks assessed but no systematic framework",
+              "title": "Some third-party AI controls exist but lack systematic pre/post procurement framework, AI Cards, or ongoing monitoring",
               "improvementPlan": {
-                "displayText": "Build a systematic third-party AI risk framework. Include AI-specific clauses in all vendor contracts."
+                "displayText": "Build a systematic third-party AI risk framework covering pre-procurement due diligence and post-procurement monitoring. Introduce AI Cards for vendor disclosure. Strengthen contractual safeguards.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
-              "id": "third_party_no",
+              "id": "third_party_none",
               "title": "None of these",
               "improvementPlan": {
-                "displayText": "Inventory all third-party AI services. Conduct risk assessments and establish minimum contractual safeguards."
+                "displayText": "Inventory all third-party AI services. Conduct initial due diligence and establish minimum contractual safeguards. Start requiring basic AI disclosure from vendors.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             }
           ],
@@ -226,27 +261,34 @@
         {
           "id": "risk_use_case",
           "title": "How do you enhance use case-level AI risk management?",
-          "description": "Conduct structured risk assessments for each AI use case. Document inherent risk, residual risk, and control effectiveness.",
+          "description": "Conduct inherent risk materiality assessments for each AI use case. Apply risk tiering (e.g. low, medium, high, critical). Map controls from the MindForge Library of Guardrails. Assess residual risk after controls are applied.",
+          "helpfulResource": {
+            "displayText": "MAS Project MindForge - Use Case-Level AI Risk Management guidance",
+            "url": "https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge"
+          },
           "choices": [
             {
               "id": "use_case_full",
-              "title": "All AI use cases have documented risk assessments with inherent and residual risk scores",
+              "title": "All AI use cases have inherent risk materiality assessments, risk tiering, mapped controls from the Library of Guardrails, and documented residual risk",
               "improvementPlan": {
-                "displayText": "Enhance use case assessments with scenario analysis and stress testing. Link to enterprise risk reporting."
+                "displayText": "Enhance use case assessments with scenario analysis and stress testing. Integrate with enterprise risk reporting. Automate control gap identification.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
               "id": "use_case_partial",
-              "title": "Some use cases assessed but not all, or assessments lack residual risk analysis",
+              "title": "Some use cases have risk assessments but lack formal risk tiering, Library of Guardrails mapping, or residual risk analysis",
               "improvementPlan": {
-                "displayText": "Extend risk assessments to all AI use cases. Ensure each assessment covers inherent risk, controls, and residual risk."
+                "displayText": "Extend inherent risk materiality assessments to all AI use cases. Apply formal risk tiering. Map controls from the MindForge Library of Guardrails. Document residual risk.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
-              "id": "use_case_no",
+              "id": "use_case_none",
               "title": "None of these",
               "improvementPlan": {
-                "displayText": "Start with the highest-materiality use cases. Use the MindForge AI Card template to structure assessments."
+                "displayText": "Start with the highest-materiality use cases. Conduct inherent risk materiality assessments using the MindForge AI Risk Taxonomy. Use the AI Card template to structure assessments.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             }
           ],
@@ -268,27 +310,34 @@
         {
           "id": "risk_inventory",
           "title": "How do you ensure AI inventory capabilities?",
-          "description": "Maintain an accurate, up-to-date inventory of all AI systems, models, data sources, and dependencies across the organisation.",
+          "description": "Maintain an AI inventory with core attributes covering system identification, ownership, risk materiality, and dependencies. Assign clear roles: Use Case Owner, Inventory Owner, and AI-specific reviewer. Keep the inventory up to date through tooling and periodic reconciliation.",
+          "helpfulResource": {
+            "displayText": "MAS Project MindForge - AI Inventory guidance",
+            "url": "https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge"
+          },
           "choices": [
             {
               "id": "inventory_full",
-              "title": "Centralised AI inventory with automated discovery and regular reconciliation",
+              "title": "AI inventory has core attributes, clear roles (Use Case Owner, Inventory Owner, reviewer), is kept up to date, and is integrated with existing asset management",
               "improvementPlan": {
-                "displayText": "Enhance inventory with lineage tracking and automated change detection. Integrate with model registries."
+                "displayText": "Enhance inventory with lineage tracking and automated change detection. Integrate with model registries and CI/CD pipelines. Implement automated discovery for shadow AI.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
               "id": "inventory_partial",
-              "title": "Partial inventory exists but is manual, incomplete, or not regularly updated",
+              "title": "Partial AI inventory exists but lacks core attributes, formal roles, regular updates, or integration with asset management",
               "improvementPlan": {
-                "displayText": "Implement a centralised AI inventory system. Automate discovery where possible and establish quarterly reconciliation."
+                "displayText": "Define core attributes for the AI inventory. Assign formal roles (Use Case Owner, Inventory Owner, reviewer). Establish quarterly reconciliation. Integrate with existing asset management.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
-              "id": "inventory_no",
+              "id": "inventory_none",
               "title": "None of these",
               "improvementPlan": {
-                "displayText": "Create a baseline AI inventory starting with known high-risk systems. Establish ownership and update cadence."
+                "displayText": "Create a baseline AI inventory starting with known high-risk systems. Define core attributes and assign ownership. Establish a quarterly update cadence.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             }
           ],
@@ -316,27 +365,34 @@
         {
           "id": "lifecycle_context",
           "title": "How do you manage use case context and design?",
-          "description": "Document business objectives, success criteria, stakeholder requirements, and ethical considerations before AI system design.",
+          "description": "Assign a Use Case Owner for every AI system. Conduct a preliminary inherent risk materiality assessment before design. Establish go/no-go checkpoints. Design human oversight mechanisms: Human in the Loop (HITL), Human over the Loop (HOTL), or Human out of the Loop (HOOL).",
+          "helpfulResource": {
+            "displayText": "MAS Project MindForge - Use Case Context and Design guidance",
+            "url": "https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge"
+          },
           "choices": [
             {
               "id": "context_full",
-              "title": "All AI use cases have documented context, objectives, success criteria, and ethical review",
+              "title": "Every AI use case has a Use Case Owner, preliminary inherent risk assessment, go/no-go checkpoints, and designed human oversight (HITL/HOTL/HOOL)",
               "improvementPlan": {
-                "displayText": "Enhance design documentation with bias analysis and fairness metrics. Integrate ethical review into design gates."
+                "displayText": "Enhance design processes with bias analysis and fairness metrics. Integrate ethical review into go/no-go checkpoints. Document human oversight rationale.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
               "id": "context_partial",
-              "title": "Some use cases have design documentation but ethical review is inconsistent",
+              "title": "Some use cases have owners and risk assessments but lack go/no-go checkpoints or formal human oversight design",
               "improvementPlan": {
-                "displayText": "Standardise use case context documentation for all AI systems. Mandate ethical review before design approval."
+                "displayText": "Mandate Use Case Owners for all AI systems. Implement preliminary inherent risk assessments. Establish go/no-go checkpoints. Design human oversight (HITL/HOTL/HOOL) for each use case.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
-              "id": "context_no",
+              "id": "context_none",
               "title": "None of these",
               "improvementPlan": {
-                "displayText": "Create a use case context template covering objectives, stakeholders, success criteria, and ethical considerations."
+                "displayText": "Start by assigning Use Case Owners to known AI systems. Conduct preliminary inherent risk assessments. Establish basic go/no-go criteria. Document intended human oversight approach.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             }
           ],
@@ -358,27 +414,34 @@
         {
           "id": "lifecycle_data",
           "title": "How do you manage data acquisition and processing for AI?",
-          "description": "Ensure data quality, provenance, privacy compliance, and bias mitigation across the AI data pipeline.",
+          "description": "Assess data fitness (quality, representativeness, balance, and ethical alignment). Address third-party data compliance (IP, licensing, usage rights). Document metadata and lineage. Implement bias mitigation in training and test data. Consider synthetic data where appropriate.",
+          "helpfulResource": {
+            "displayText": "MAS Project MindForge - Data Acquisition and Processing guidance",
+            "url": "https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge"
+          },
           "choices": [
             {
               "id": "data_full",
-              "title": "Data governance framework with quality metrics, provenance tracking, and bias monitoring",
+              "title": "Data fitness is assessed for all AI datasets; metadata/lineage is documented; bias mitigation is implemented; third-party data compliance is verified",
               "improvementPlan": {
-                "displayText": "Enhance data governance with automated quality checks and real-time bias detection. Expand provenance to third-party data."
+                "displayText": "Enhance data governance with automated fitness checks and real-time bias detection. Expand provenance to third-party and synthetic data. Implement continuous data quality monitoring.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
               "id": "data_partial",
-              "title": "Some data controls exist but gaps in quality, provenance, or bias management",
+              "title": "Some data controls exist but gaps in fitness assessment, metadata/lineage, bias mitigation, or third-party data compliance",
               "improvementPlan": {
-                "displayText": "Build a comprehensive data governance framework for AI. Implement data quality metrics and bias monitoring."
+                "displayText": "Implement formal data fitness assessments for all AI datasets. Document metadata and lineage. Establish bias mitigation procedures. Verify third-party data compliance (IP, licensing).",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
-              "id": "data_no",
+              "id": "data_none",
               "title": "None of these",
               "improvementPlan": {
-                "displayText": "Start with data inventory and classification. Implement basic quality checks and establish data ownership."
+                "displayText": "Start with data inventory and classification for AI systems. Implement basic data quality checks. Document metadata for high-risk datasets. Establish data ownership.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             }
           ],
@@ -400,27 +463,34 @@
         {
           "id": "lifecycle_build",
           "title": "How do you manage onboarding, build, and review of AI systems?",
-          "description": "Establish development standards, model validation, testing protocols, and review gates for AI system build phases.",
+          "description": "Establish processes for selecting pre-trained models, fine-tuning, model validation, and testing. Implement AI-specific disclosure and user transparency requirements. Apply tiered review approaches based on risk materiality.",
+          "helpfulResource": {
+            "displayText": "MAS Project MindForge - Onboarding, Build, and Review guidance",
+            "url": "https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge"
+          },
           "choices": [
             {
               "id": "build_full",
-              "title": "Structured build process with validation, testing, peer review, and model cards",
+              "title": "Structured build process covers pre-trained model selection, fine-tuning, validation, testing, AI-specific disclosure, and tiered review",
               "improvementPlan": {
-                "displayText": "Enhance build process with automated testing and continuous validation. Integrate model cards into the release process."
+                "displayText": "Enhance build process with automated testing and continuous validation. Integrate model cards and disclosure documentation. Implement principle-based review frameworks.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
               "id": "build_partial",
-              "title": "Some build controls exist but validation or review is inconsistent",
+              "title": "Some build controls exist but lack structured model selection, disclosure requirements, or tiered review",
               "improvementPlan": {
-                "displayText": "Formalise the AI build process with mandatory validation, testing, and peer review gates. Introduce model cards."
+                "displayText": "Formalise the AI build process with pre-trained model selection criteria, fine-tuning standards, and validation protocols. Implement AI-specific disclosure requirements. Establish tiered review based on risk materiality.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
-              "id": "build_no",
+              "id": "build_none",
               "title": "None of these",
               "improvementPlan": {
-                "displayText": "Define minimum build standards for AI. Implement model validation and basic testing before deployment."
+                "displayText": "Define minimum build standards for AI. Implement model validation and basic testing before deployment. Start with disclosure requirements for customer-facing AI.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             }
           ],
@@ -442,27 +512,34 @@
         {
           "id": "lifecycle_deploy",
           "title": "How do you manage AI system deployment?",
-          "description": "Implement deployment controls including staging environments, rollback capabilities, A/B testing, and production readiness checks.",
+          "description": "Establish deployment decision points, approval workflows, and production readiness criteria. Implement staged deployment (e.g. shadow, pilot, limited, full). Ensure rollback capabilities are tested and documented.",
+          "helpfulResource": {
+            "displayText": "MAS Project MindForge - Deployment guidance",
+            "url": "https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge"
+          },
           "choices": [
             {
               "id": "deploy_full",
-              "title": "Deployment pipeline with staging, rollback, readiness checks, and automated monitoring",
+              "title": "Deployment pipeline has decision points, approval workflows, production readiness checks, staged deployment, and tested rollback",
               "improvementPlan": {
-                "displayText": "Enhance deployment with canary releases and automated rollback triggers. Integrate deployment checks into CI/CD."
+                "displayText": "Enhance deployment with canary releases and automated rollback triggers. Integrate deployment checks into CI/CD. Add post-deployment validation gates.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
               "id": "deploy_partial",
-              "title": "Some deployment controls exist but pipeline is manual or lacks rollback",
+              "title": "Some deployment controls exist but lack formal decision points, staged deployment, or tested rollback",
               "improvementPlan": {
-                "displayText": "Build a structured deployment pipeline for AI. Implement staging, readiness checks, and rollback capabilities."
+                "displayText": "Build a structured deployment pipeline for AI with formal decision points and approval workflows. Implement staged deployment (shadow, pilot, limited, full). Test and document rollback procedures.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
-              "id": "deploy_no",
+              "id": "deploy_none",
               "title": "None of these",
               "improvementPlan": {
-                "displayText": "Define minimum deployment controls for AI. Start with staging environment and basic readiness checklist."
+                "displayText": "Define minimum deployment controls for AI. Establish a staging environment and basic readiness checklist. Document rollback procedures.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             }
           ],
@@ -484,27 +561,34 @@
         {
           "id": "lifecycle_monitor",
           "title": "How do you manage AI system usage, monitoring, and change?",
-          "description": "Continuously monitor AI system performance, drift, fairness, and security. Establish change management for model updates.",
+          "description": "Implement post-deployment monitoring including performance, drift, fairness, and security. Establish human oversight over-the-loop for high-risk decisions. Implement output validation, feedback loops, incident management, and formal change management. Plan for model retirement.",
+          "helpfulResource": {
+            "displayText": "MAS Project MindForge - Usage, Monitoring, and Change Management guidance",
+            "url": "https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge"
+          },
           "choices": [
             {
               "id": "monitor_full",
-              "title": "Continuous monitoring with drift detection, fairness metrics, and formal change management",
+              "title": "Continuous monitoring covers performance, drift, fairness, and security; human oversight over-the-loop is implemented; change management and incident response are formalised",
               "improvementPlan": {
-                "displayText": "Enhance monitoring with automated alerting and model retraining triggers. Integrate change management with model registry."
+                "displayText": "Enhance monitoring with automated alerting and model retraining triggers. Integrate change management with model registry. Implement formal model retirement and decommissioning procedures.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
               "id": "monitor_partial",
-              "title": "Some monitoring exists but lacks drift detection or formal change management",
+              "title": "Some monitoring exists but lacks drift detection, formal human oversight over-the-loop, structured incident response, or change management",
               "improvementPlan": {
-                "displayText": "Implement continuous monitoring for all production AI systems. Add drift detection and formalise change management."
+                "displayText": "Implement continuous monitoring for all production AI systems including drift and fairness metrics. Establish human oversight over-the-loop for high-risk decisions. Formalise incident response and change management.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
-              "id": "monitor_no",
+              "id": "monitor_none",
               "title": "None of these",
               "improvementPlan": {
-                "displayText": "Start with basic performance monitoring for production AI. Define change management process for model updates."
+                "displayText": "Start with basic performance monitoring for production AI. Define change management process for model updates. Establish incident response procedures for AI failures.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             }
           ],
@@ -532,27 +616,34 @@
         {
           "id": "enabler_skills",
           "title": "How do you enable AI governance with skills, knowledge, and culture?",
-          "description": "Build organisational capability through training, awareness programs, and a culture of responsible AI use.",
+          "description": "Build AI literacy and risk awareness through tiered training (e.g. Board/Senior Management, practitioners, all staff). Develop skills for key roles. Foster a culture of responsible AI use. Implement approved usage policies for AI tools.",
+          "helpfulResource": {
+            "displayText": "MAS Project MindForge - Skills, Knowledge, and Culture guidance",
+            "url": "https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge"
+          },
           "choices": [
             {
               "id": "skills_full",
-              "title": "Comprehensive AI training program with role-based curricula and culture metrics",
+              "title": "Tiered AI literacy program covers Board, practitioners, and all staff; key roles have defined skills; approved usage policies are in place",
               "improvementPlan": {
-                "displayText": "Expand training to emerging AI topics. Measure and report on culture and awareness metrics."
+                "displayText": "Expand training to emerging AI topics (e.g. Agentic AI). Measure and report on culture and awareness metrics. Update approved usage policies as AI tools evolve.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
               "id": "skills_partial",
-              "title": "Some training exists but is not role-based or lacks coverage of AI risk",
+              "title": "Some AI training exists but is not tiered, lacks coverage for key roles, or approved usage policies are missing",
               "improvementPlan": {
-                "displayText": "Develop role-based AI training curricula. Add AI risk and ethics modules for all relevant roles."
+                "displayText": "Develop tiered AI literacy curricula for Board, practitioners, and all staff. Define skills requirements for key roles. Implement approved usage policies for AI tools.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
-              "id": "skills_no",
+              "id": "skills_none",
               "title": "None of these",
               "improvementPlan": {
-                "displayText": "Start with awareness training for leadership and AI practitioners. Build towards role-based curricula."
+                "displayText": "Start with awareness training for leadership and AI practitioners. Develop an approved usage policy for commonly used AI tools. Build towards role-based curricula.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             }
           ],
@@ -574,27 +665,34 @@
         {
           "id": "enabler_infrastructure",
           "title": "How do you manage AI infrastructure?",
-          "description": "Ensure compute, storage, and network infrastructure supports AI workloads securely, scalably, and cost-effectively.",
+          "description": "Ensure infrastructure supports AI workloads securely and scalably. Address compute considerations for traditional AI, Generative AI, and Agentic AI. Implement security controls and access management. Consider environmental impact and sustainability.",
+          "helpfulResource": {
+            "displayText": "MAS Project MindForge - AI Infrastructure guidance",
+            "url": "https://www.mas.gov.sg/schemes-and-initiatives/ftig/project-mindforge"
+          },
           "choices": [
             {
               "id": "infra_full",
-              "title": "AI infrastructure managed with security controls, scalability, and cost governance",
+              "title": "AI infrastructure covers traditional, Gen AI, and Agentic AI workloads with security controls, scalability, access management, and environmental considerations",
               "improvementPlan": {
-                "displayText": "Optimise infrastructure costs with auto-scaling and spot instances. Enhance security with zero-trust networking."
+                "displayText": "Optimise infrastructure costs with auto-scaling and efficient compute allocation. Enhance security with zero-trust networking. Measure and report environmental impact.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
               "id": "infra_partial",
-              "title": "Some infrastructure controls exist but gaps in security, scalability, or cost management",
+              "title": "Some infrastructure controls exist but gaps in Gen AI/Agentic AI support, security, access management, or environmental considerations",
               "improvementPlan": {
-                "displayText": "Formalise AI infrastructure governance. Implement security controls, auto-scaling, and cost monitoring."
+                "displayText": "Assess infrastructure requirements for Gen AI and Agentic AI workloads. Implement security controls and access management. Establish environmental impact monitoring.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             },
             {
-              "id": "infra_no",
+              "id": "infra_none",
               "title": "None of these",
               "improvementPlan": {
-                "displayText": "Assess current AI infrastructure against security and scalability requirements. Establish baseline controls."
+                "displayText": "Assess current AI infrastructure against security and scalability requirements. Establish baseline controls for AI compute and data storage. Implement access management.",
+                "url": "https://www.mas.gov.sg/-/media/mas-media-library/schemes-and-initiatives/ftig/project-mindforge/mindforge-ai-risk-management-operationalisation-handbook.pdf"
               }
             }
           ],
