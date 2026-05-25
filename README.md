@@ -1,6 +1,6 @@
 # Unofficial Well-Architected MAS MindForge Lens
 
-A custom AWS Well-Architected Lens that maps the MAS Project MindForge AI Risk Management and Governance Framework (January 2026) into the AWS Well-Architected Tool.
+A custom AWS Well-Architected Lens that maps the MAS AI Risk Management Operationalisation Handbook (March 2026) into the AWS Well-Architected Tool.
 
 **This is an unofficial, community-maintained project.** It is not endorsed by MAS or AWS.
 
@@ -8,7 +8,7 @@ A custom AWS Well-Architected Lens that maps the MAS Project MindForge AI Risk M
 
 ## What This Is
 
-The Monetary Authority of Singapore (MAS) Project MindForge provides a comprehensive AI Risk Management and Governance Framework for Financial Services Institutions. This lens translates that framework into the AWS Well-Architected Tool's custom lens format, enabling systematic AI governance reviews within AWS-native workflows.
+The Monetary Authority of Singapore (MAS) Project MindForge provided a comprehensive AI Risk Management Operationalisation Handbook for Financial Services Institutions. This lens translates that handbook into an AWS Well-Architected Tool's custom lens format, enabling systematic AI governance reviews within AWS-native workflows.
 
 ---
 
